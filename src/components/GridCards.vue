@@ -15,21 +15,21 @@
                     <div class="row">
                         <div class="col col-12 col-md-6">
                             <div class="card c1">
-                                <img src="../assets/img/gridcards.png" class="card-img-top" alt="Actividad ABN">
+                                <img src="../assets/img/Act1SE.png" class="card-img-top" alt="Actividad ABN">
                                 <div class="card-body">
                                     <h5 class="card-title">Complemento a 10 - Primera</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <p class="card-text">Vamos a ejercitarnos y abordar las parejas de números naturales menores a 10 que sumen precisamente una decena.</p>
                                     <router-link to="/complementoa10"><span class="ligas">Comenzar</span></router-link>
                                 </div>
                             </div>
                         </div>
                         <div class="col col-12 col-md-6">
                             <div class="card c1">
-                                <img src="../assets/img/gridcards.png" class="card-img-top" alt="Actividad ABN">
+                                <img src="../assets/img/Act2SE.png" class="card-img-top" alt="Actividad ABN">
                                 <div class="card-body">
                                     <h5 class="card-title">Complemento a 10 - Segunda</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Comenzar</a>
+                                    <p class="card-text">Continuamos con la historia de los peces cuyas escamas y el número 10 (la decena) estan muy relalacionados.</p>
+                                    <router-link to="/complementoa102"><span class="ligas">Comenzar</span></router-link>
                                 </div>
                             </div>
                         </div>
