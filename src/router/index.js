@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 import GridCards from "../components/GridCards.vue";
 import ComplementoA10 from "../components/actvs/ComplementoA10.vue"
 import ComplementoA102 from "../components/actvs/ComplementoA102.vue"
+import ProblemaCambio from "../components/actvs/ProblemaCambio.vue"
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,11 @@ const routes = [
         path: "/complementoa102",
         name: "complementoa102",
         component: ComplementoA102
+    },
+    {
+        path: "/problemacambio",
+        name: "problemacambio",
+        component: ProblemaCambio
     }
 ]
 
