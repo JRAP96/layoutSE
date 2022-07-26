@@ -4,7 +4,10 @@
             <table class="table table-bordered border-primary">
                 <thead>
                     <tr>
-                        <th colspan="4" class="bg bg-primary">{{this.x}} - {{this.resta}}</th>
+                        <th colspan="4" class="bg bg-primary">
+                            <p v-if="!finalizo">{{this.x}} - {{this.resta}}</p>
+                            <p v-if="finalizo">{{this.x}} - {{this.resta}} = {{this.valorResta}}</p>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -16,10 +19,10 @@
                     </tr>
                     <tr v-for="(item,index) in contadorArray" :key="index" :class="{bordesGreen: (item.correcto1 && item.correcto2), bordesNone: !(item.correcto1 && item.correcto2)}">
                         <td class="bg-info">
-                            <input type="number" placeholder="..." v-model.number="item.quito">
+                            <input type="number" :disabled="(item.desabilitar == 1)||(item.correcto1 && item.correcto2)" placeholder="..." v-model.number="item.quito">
                         </td>
-                        <td>
-                            <input type="number" placeholder="..." v-model.number="item.minuendo">
+                        <td :class="{finalS: item.final,finalN: !item.final}">
+                            <input type="number" :disabled="(item.desabilitar == 1)||(item.correcto1 && item.correcto2)" placeholder="..." v-model.number="item.minuendo">
                                 <div v-if="item.pasados1" class="alert alert-warning text-dark" role="alert">
                                     <p class="fs-6">Quitaste menos de lo que indicaste en la columna Quito. Corrigue</p>
                                 </div>
@@ -27,8 +30,8 @@
                                     <p class="fs-6">Quitaste más de lo indicado en Quito.</p>
                                 </div>
                         </td>
-                        <td>
-                            <input type="number" placeholder="..." v-model.number="item.sustraendo">
+                        <td :class="{finalS: item.final,finalN: !item.final}">
+                            <input type="number" :disabled="(item.desabilitar == 1)||(item.correcto1 && item.correcto2)" placeholder="..." v-model.number="item.sustraendo">
                                 <div v-if="item.pasados3" class="alert alert-warning text-dark" role="alert">
                                     <p class="fs-6">Quitaste menos de lo que indicaste en la columna Quito. Corrigue</p>
                                 </div>
@@ -36,7 +39,7 @@
                                     <p class="fs-6">Quitaste más de lo que indicaste en la columna Quito. Corrigue</p>
                                 </div>
                         </td>
-                        <td>
+                        <td :class="{finalS: item.final,finalN: !item.final}">
                             <button
                                 v-if="!(item.correcto1 && item.correcto2)"
                                 :id="index" 
@@ -45,6 +48,7 @@
                                 @click="validador($event)">
                                     {{item.llenos?"Validar":"Debes llenar la fila. Luego da click."}}
                             </button>
+                            <p class="fs-6" v-else-if="item.final">Terminaste. Mira la resta</p>
                             <p v-else class="fs-6">Correcto</p>
                             <div v-if="item.pasados" class="alert alert-danger text-dark" role="alert">
                                 <p class="fs-6">No puedes quitar más que el sustraendo ni colocar negativos. Corrigue.</p>
@@ -68,11 +72,13 @@ export default {
     },
     data: function() { 
         return{
-            contadorArray: [ {quito: null,minuendo: null,sustraendo: null,llenos: true,pasados: false,pasados1: false,pasados2: false,pasados3: false,pasados4: false,correcto1: false,correcto2: false},
-                            {quito: null,minuendo: null,sustraendo: null,llenos: true,pasados: false,pasados1: false,pasados2: false,pasados3: false,pasados4: false,correcto1: false,correcto2: false},
-                            {quito: null,minuendo: null,sustraendo: null,llenos: true,pasados: false,pasados1: false,pasados2: false,pasados3: false,pasados4: false,correcto1: false,correcto2: false}],
+            contadorArray: [ {quito: null,minuendo: null,sustraendo: null,llenos: true,pasados: false,pasados1: false,pasados2: false,pasados3: false,pasados4: false,correcto1: false,correcto2: false,desabilitar: 0,final: false},
+                            {quito: null,minuendo: null,sustraendo: null,llenos: true,pasados: false,pasados1: false,pasados2: false,pasados3: false,pasados4: false,correcto1: false,correcto2: false,desabilitar: 1,final: false},
+                            {quito: null,minuendo: null,sustraendo: null,llenos: true,pasados: false,pasados1: false,pasados2: false,pasados3: false,pasados4: false,correcto1: false,correcto2: false,desabilitar: 1,final: false}],
             xNew: this.x,
             restaNew: this.resta,
+            finalizo: false,
+            valorResta: null,
         }
     },
     computed: {
@@ -91,7 +97,9 @@ export default {
                 pasados3: false,
                 pasados4: false,
                 correcto1: false,
-                correcto2: false
+                correcto2: false,
+                desabilitar: 1,
+                final: false
             });
         },
         validador(evt) {    // Vamos a validar que haya metido los tres datos de la fila y enlazamos los demas metodos que continuan de validacion
@@ -100,6 +108,7 @@ export default {
                 objNow.llenos = true;
                 this.validador2(parseInt(evt.target.id));
                 this.validador3(parseInt(evt.target.id));
+                this.validador4(objNow,parseInt(evt.target.id));
             } else {
                 objNow.llenos = false;
             }
@@ -107,8 +116,8 @@ export default {
         },
         validador2(idO) {   // Validamos que los dominios de las tres entradas esten en los intervalos naturales adecuados
             let objO = this.contadorArray[idO];
-            if (idO == 0) {     // Cuando apenas se comienza idO=0, se crea un array previo idO=-1.
-                let objA = {quito: 0,minuendo: this.xNew,sustraendo: this.restaNew,llenos: true,pasados: false,pasados1: false,pasados2: false,pasados3: false,pasados4: false};
+            if (idO == 0) {     // Cuando apenas se comienza idO=0, se crea un obj previo idO=-1.
+                let objA = {quito: 0,minuendo: this.xNew,sustraendo: this.restaNew,llenos: true,pasados: false,pasados1: false,pasados2: false,pasados3: false,pasados4: false,correcto1: false,correcto2: false,desabilitar: 1,final: false}; // Obj provisional que funciona como fila 0.
                 if (objO.quito > objA.sustraendo || objO.quito < 0 || objO.sustraendo < 0 || objO.minuendo < 0) {
                     objO.pasados = true;
                 } else {
@@ -127,7 +136,7 @@ export default {
         validador3(idO) {   // Validamos (que los numeros ingresados por filas sean correctos) que la dif entre un minuendo (sustraendo) anterior y uno posterior sea lo que queria quitar el usuario, menor o mayor.
             let objO = this.contadorArray[idO];
             if (idO == 0) { // Para el primer objeto del array idO = 0
-                let objA = {quito: 0,minuendo: this.xNew,sustraendo: this.restaNew,llenos: true,pasados: false,pasados1: false,pasados2: false,pasados3: false,pasados4: false};
+                let objA = {quito: 0,minuendo: this.xNew,sustraendo: this.restaNew,llenos: true,pasados: false,pasados1: false,pasados2: false,pasados3: false,pasados4: false,correcto1: false,correcto2: false,desabilitar: 1,final: false};
                 let dif1 = objA.minuendo - objO.minuendo;
                 let dif2 = objA.sustraendo - objO.sustraendo;
                 this.validador31(dif1,objO);    // hacer la validacion para el minuendo
@@ -166,6 +175,21 @@ export default {
                 obj.pasados4 = false;
             }
         },
+        validador4(obj,idNow) { // Validamos que estando correctos los inputs de cada fila se habiliten los inputs de la fila siguiente, en caso de ser una la ultima fila se agrega automaticamente una sino se cumple que el valor del sustraendo es 0. Si es cero se acaba todo.
+            if(obj.correcto1 == true && obj.correcto2 == true) {
+                let idProx = idNow + 1;
+                if(this.contadorArray[idProx] == undefined && obj.sustraendo != 0) {
+                    this.agregarFila();
+                }
+                if(obj.sustraendo == 0) {
+                    this.valorResta = obj.minuendo;
+                    this.finalizo = true;
+                    obj.final = true;
+                    return
+                }
+                this.contadorArray[(idProx)].desabilitar = 0;
+            }
+        }
     }
 }
 </script>
@@ -190,6 +214,12 @@ input{
 }
 .bordesNone{
     border: blue 0.5px solid;
+}
+.finalS{
+    background-color: rgb(110, 173, 110);
+}
+.finalN{
+    background-color: none;
 }
 
 </style>
