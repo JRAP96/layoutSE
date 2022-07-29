@@ -176,6 +176,7 @@ export default {
             }
         },
         validador4(obj,idNow) { // Validamos que estando correctos los inputs de cada fila se habiliten los inputs de la fila siguiente, en caso de ser una la ultima fila se agrega automaticamente una sino se cumple que el valor del sustraendo es 0. Si es cero se acaba todo.
+        // AQUI emitimos el evento al padre que dara de informacion ((obj.minuendo,obj.sustraendo,obj.quito)) esas tres.
             if(obj.correcto1 == true && obj.correcto2 == true) {
                 let idProx = idNow + 1;
                 if(this.contadorArray[idProx] == undefined && obj.sustraendo != 0) {
@@ -185,11 +186,13 @@ export default {
                     this.valorResta = obj.minuendo;
                     this.finalizo = true;
                     obj.final = true;
+                    this.$emit('objAct',obj.minuendo,obj.sustraendo,obj.quito);
                     return
                 }
                 this.contadorArray[(idProx)].desabilitar = 0;
+                this.$emit('objAct',obj.minuendo,obj.sustraendo,obj.quito);
             }
-        }
+        },
     }
 }
 </script>

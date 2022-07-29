@@ -37,11 +37,11 @@
                     <div class="row">
                         <div class="col col-12 col-md-4">
                             <div class="card c2">
-                                <img src="../assets/img/gridcards.png" class="card-img-top" alt="Actividad ABN">
+                                <img src="../assets/img/Act3SE.png" class="card-img-top" alt="Actividad ABN">
                                 <div class="card-body">
                                     <h5 class="card-title">Problema de Cambio</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="/problemacambio" class="btn btn-primary">Comenzar</a>
+                                    <p class="card-text">Resolveras un problema de cambio que implica hacer una resta. Haz la resta mediante el formato de algoritmo ABN y visualiza que ocurre.</p>
+                                    <router-link to="/problemacambio"><span class="ligas">Comenzar</span></router-link>
                                 </div>
                             </div>
                         </div>
