@@ -58,7 +58,7 @@
             </div>
         </div>
         <button type="button" class="btn btn-primary" @click="generarRamdon">Comenzar</button>
-        <button type="button" class="btn btn-secondary" @click="reiniciarRamdon">Reiniciar</button>
+        <!-- <button type="button" class="btn btn-secondary" @click="reiniciarRamdon">Reiniciar</button> -->
         <router-link to="/"><span class="ligas">Ver Actividades</span></router-link>
     </div>
 </template>
@@ -84,12 +84,17 @@ export default {
             susAct: null,
             quitoAct: null,
             flechaO: null,
-            indicador: null
+            flechaV: null,
+            indicador: null,
+            indicadorSus: null
         }
     },
     computed: {
         convertCA(){
             return this.x * 1.45
+        },
+        convertCAres(){
+            return this.resta * 1.45
         }
     },
     methods: {
@@ -99,19 +104,25 @@ export default {
         },
         generarRamdon() {
             this.x = this.randomF(60,100);
-            this.y = this.randomF(1,55);
+            this.y = this.randomF(40,55);
             this.resta = this.x - this.y;
             this.mostrarIntro = false;
             // Creamos las flechas en la imagen svg. Una flecha la tomamos con la etiqueta que le pusimos y la otra es el clon.
             let flecha = Snap("#flecha");
             this.flechaO = flecha;
             this.flechaO.transform('r'+this.convertCA+',975,1070');
-            let flechaClon = this.flechaO.clone().attr({fill:"blue"});
+            let flechaClon = this.flechaO.clone();
+            this.flechaV = this.flechaO.clone();
+            flecha.attr({fill:"rgba(255, 0, 0, 0.4)",stroke:"red",strokeWidth:"8"});
+            flechaClon.attr({fill:"blue",stroke:"blue",strokeWidth:"8"});
+            this.flechaV.attr({fill:"rgba(50, 128, 50, 0.4)",stroke:"green",strokeWidth:"8"});
             flechaClon.transform('r'+this.convertCA+',975,1070');
+            this.flechaV.transform('r'+this.convertCAres+',975,1070');
             // Texto inicial en la imagen svg
-            this.sC.text(1630,1000,'100 lts').attr({fill:"white","font-size": "90","font-weight":"bold"});
-            this.sC.text(80,1000,'0 lts').attr({fill:"white","font-size": "90","font-weight":"bold"});
-            this.sC.text(1500,410,this.x.toString()+' lts').attr({fill:"blue","font-size": "120","font-weight":"bold"});
+            this.sC.text(1630,1000,'100 lt').attr({fill:"white","font-size": "90","font-weight":"bold"});
+            this.sC.text(80,1000,'0 lt').attr({fill:"white","font-size": "90","font-weight":"bold"});
+            this.sC.text(1500,410,this.x.toString()+' lt').attr({fill:"blue","font-size": "120","font-weight":"bold"});
+            this.indicadorSus=this.sC.text(150,410,this.resta.toString()+' lt').attr({fill:"green","font-size": "120","font-weight":"bold"});
             this.indicador=this.sC.text(840,1400,'----').attr({fill:"red","font-size": "150","font-weight":"bold"});
             //this.sC.rect(975,1070,100,100).attr({fill: 'green'}); Angulo [0,145] grados.
         },
@@ -122,13 +133,17 @@ export default {
             this.minAct = minuendo;
             this.susAct = sustraendo;
             this.quitoAct = quito;
-            this.actualizadorFlecha(this.minAct);
+            this.actualizadorFlecha(this.minAct,this.susAct);
         },
-        actualizadorFlecha(cuanto) {
+        actualizadorFlecha(cuanto,cuantosus) {
             let cuantoSA = cuanto*1.4;
-            this.flechaO.transform('r'+cuantoSA+',975,1070');
-            //this.flechaO.animate({transform: 'r'+cuantoA+',975,1070'},2000);
-            this.indicador.attr({fill:"red","font-size": "150","font-weight":"bold",text:cuanto.toString()+' lts'});
+            let cuantoSA2 = cuantosus*1.4;
+            //this.flechaO.transform('r'+cuantoSA+',975,1070'); // Hay un detalle en la tranformacion, estas lineas son para hacer el cambio
+            //this.flechaV.transform('r'+cuantoSA2+',975,1070');    // Directo, sin tranformacion.
+            this.flechaO.animate({transform: 'r'+cuantoSA+',975,1070'},1500);
+            this.flechaV.animate({transform: 'r'+cuantoSA2+',975,1070'},1500);
+            this.indicador.attr({fill:"red","font-size": "150","font-weight":"bold",text:cuanto.toString()+' lt'});
+            this.indicadorSus.attr({fill:"green","font-size": "120","font-weight":"bold",text:cuantosus.toString()+' lt'});
         },
         rutaArco() {
 
@@ -149,7 +164,7 @@ export default {
 }
     #question{
         font-weight: bold;
-        color: rgb(50, 128, 50)
+        color: rgb(50, 128, 50);
     }
 #problema1{
 display: flex;
