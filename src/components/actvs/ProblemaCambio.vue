@@ -10,7 +10,7 @@
         <div id="problema" v-show="!mostrarIntro">
             <p class="fs-3">El lunes por la mañana mi automóvil tenía <strong>{{this.x}} litros de gasolina</strong>, durante toda la semana trabaje y al final de la semana solo tenía <strong>{{this.resta}} litros</strong>. <span id="question">¿Cuántos litros de gasolina gaste en la semana?</span></p>
             <div id="problema1">
-                <formato-resta v-if="!mostrarIntro" @objAct="actualizarObj" :x="x" :y="y" :resta="resta"/>
+                <formato-resta v-if="!mostrarIntro" @objAct="actualizarObj" :x="x" :y="y" :resta="resta" :tituloMin="'Gasolina Inicial'" :tituloSus="'Gasolina Final'"/>
                 <!-- <svg id="svg" width="400" height="200">
                     <pattern id="pattern" patternUnits="userSpaceOnUse" x="0" y="0" width="10" height="10" viewBox="0 0 10 10">
                         <path d="M-5,0,10,15M0-5,15,10" stroke="white" stroke-width="5"/>

@@ -12,10 +12,16 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th class="bg-info">Quito</th>
-                        <th>{{this.x}}</th>
-                        <th>{{this.resta}}</th>
-                        <th>Checar</th>
+                        <th class="bg-info withPad">Quito</th>
+                        <th>
+                            <p class="fs-6 lh-1">{{this.tituloMin}}</p>
+                            {{this.x}}
+                        </th>
+                        <th>
+                            <p class="fs-6 lh-1">{{this.tituloSus}}</p>
+                            {{this.resta}}
+                        </th>
+                        <th class="withPad">Checar</th>
                     </tr>
                     <tr v-for="(item,index) in contadorArray" :key="index" :class="{bordesGreen: (item.correcto1 && item.correcto2), bordesNone: !(item.correcto1 && item.correcto2)}">
                         <td class="bg-info">
@@ -69,7 +75,9 @@ export default {
     props: {
         x: Number,
         y: Number,
-        resta: Number
+        resta: Number,
+        tituloMin: String,
+        tituloSus: String,
     },
     data: function() { 
         return{
@@ -203,6 +211,9 @@ export default {
 </script>
 
 <style scoped>
+.withPad{
+    padding-top: 2rem;
+}
 #contFormato{
     text-align: center;
     width: 250px;
