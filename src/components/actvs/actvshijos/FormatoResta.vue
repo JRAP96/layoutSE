@@ -19,10 +19,10 @@
                     </tr>
                     <tr v-for="(item,index) in contadorArray" :key="index" :class="{bordesGreen: (item.correcto1 && item.correcto2), bordesNone: !(item.correcto1 && item.correcto2)}">
                         <td class="bg-info">
-                            <input type="number" :disabled="(item.desabilitar == 1)||(item.correcto1 && item.correcto2)" placeholder="..." v-model.number="item.quito">
+                            <input type="number" :disabled="(item.desabilitar == 1)||(item.correcto1 && item.correcto2)" placeholder="..." v-model.number="item.quito" onkeypress="return event.charCode >= 48" min="0">
                         </td>
                         <td :class="{finalS: item.final,finalN: !item.final}">
-                            <input type="number" :disabled="(item.desabilitar == 1)||(item.correcto1 && item.correcto2)" placeholder="..." v-model.number="item.minuendo">
+                            <input type="number" :disabled="(item.desabilitar == 1)||(item.correcto1 && item.correcto2)" placeholder="..." v-model.number="item.minuendo" onkeypress="return event.charCode >= 48" min="0">
                                 <div v-if="item.pasados1" class="alert alert-warning text-dark" role="alert">
                                     <p class="fs-6">Quitaste menos de lo que indicaste en la columna Quito. Corrigue</p>
                                 </div>
@@ -31,7 +31,7 @@
                                 </div>
                         </td>
                         <td :class="{finalS: item.final,finalN: !item.final}">
-                            <input type="number" :disabled="(item.desabilitar == 1)||(item.correcto1 && item.correcto2)" placeholder="..." v-model.number="item.sustraendo">
+                            <input type="number" :disabled="(item.desabilitar == 1)||(item.correcto1 && item.correcto2)" placeholder="..." v-model.number="item.sustraendo" onkeypress="return event.charCode >= 48" min="0">
                                 <div v-if="item.pasados3" class="alert alert-warning text-dark" role="alert">
                                     <p class="fs-6">Quitaste menos de lo que indicaste en la columna Quito. Corrigue</p>
                                 </div>
@@ -63,6 +63,7 @@
 </template>
 
 <script>
+
 export default {
     name: "FormatoResta",
     props: {
@@ -157,9 +158,11 @@ export default {
             } else if (dif > obj.quito) {
                 obj.pasados2 = true;
                 obj.pasados1 = false;
+                obj.correcto1 = false;
             } else {
                 obj.pasados1 = true;
                 obj.pasados2 = false;
+                obj.correcto1 = false;
             }
         },
         validador32(dif,obj) {  // Para esta validacion ver validacion3(ido)
@@ -170,9 +173,11 @@ export default {
             } else if (dif > obj.quito) {
                 obj.pasados4 = true;
                 obj.pasados3 = false;
+                obj.correcto2 = false;
             } else {
                 obj.pasados3 = true;
                 obj.pasados4 = false;
+                obj.correcto2 = false;
             }
         },
         validador4(obj,idNow) { // Validamos que estando correctos los inputs de cada fila se habiliten los inputs de la fila siguiente, en caso de ser una la ultima fila se agrega automaticamente una sino se cumple que el valor del sustraendo es 0. Si es cero se acaba todo.

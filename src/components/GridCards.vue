@@ -51,7 +51,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Problema de Combinación</h5>
                                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Comenzar</a>
+                                    <router-link to="/problemacombinacion"><span class="ligas">Comenzar</span></router-link>
                                 </div>
                             </div>
                         </div>

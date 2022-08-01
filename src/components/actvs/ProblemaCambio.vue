@@ -139,9 +139,9 @@ export default {
             let cuantoSA = cuanto*1.4;
             let cuantoSA2 = cuantosus*1.4;
             //this.flechaO.transform('r'+cuantoSA+',975,1070'); // Hay un detalle en la tranformacion, estas lineas son para hacer el cambio
-            //this.flechaV.transform('r'+cuantoSA2+',975,1070');    // Directo, sin tranformacion.
-            this.flechaO.animate({transform: 'r'+cuantoSA+',975,1070'},1500);
-            this.flechaV.animate({transform: 'r'+cuantoSA2+',975,1070'},1500);
+            //this.flechaV.transform('r'+cuantoSA2+',975,1070');    // Directo, sin animacion.
+            this.flechaO.animate({transform: 'r'+cuantoSA+',975,1070'},2000);
+            this.flechaV.animate({transform: 'r'+cuantoSA2+',975,1070'},2000);
             this.indicador.attr({fill:"red","font-size": "150","font-weight":"bold",text:cuanto.toString()+' lt'});
             this.indicadorSus.attr({fill:"green","font-size": "120","font-weight":"bold",text:cuantosus.toString()+' lt'});
         },

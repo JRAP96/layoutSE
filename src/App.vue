@@ -36,4 +36,12 @@ export default {
 .ligas:hover{
   background-color: rgba(144, 238, 144,0.5);
 }
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number]{
+  -moz-appearance: textfield;
+}
 </style>
