@@ -11,11 +11,6 @@
             <p class="fs-3">El lunes por la mañana mi automóvil tenía <strong>{{this.x}} litros de gasolina</strong>, durante toda la semana trabaje y al final de la semana solo tenía <strong>{{this.resta}} litros</strong>. <span id="question">¿Cuántos litros de gasolina gaste en la semana?</span></p>
             <div id="problema1">
                 <formato-resta v-if="!mostrarIntro" @objAct="actualizarObj" :x="x" :y="y" :resta="resta" :tituloMin="'Gasolina Inicial'" :tituloSus="'Gasolina Final'"/>
-                <!-- <svg id="svg" width="400" height="200">
-                    <pattern id="pattern" patternUnits="userSpaceOnUse" x="0" y="0" width="10" height="10" viewBox="0 0 10 10">
-                        <path d="M-5,0,10,15M0-5,15,10" stroke="white" stroke-width="5"/>
-                    </pattern>
-                </svg> -->
                 <svg width="400" height="270" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg" x="0px" y="0px" viewBox="0 0 1920 1518" enable-background="new 0 0 400 200" xml:space="preserve">
                 <g>
                     <rect width="1920" height="1518"/>
