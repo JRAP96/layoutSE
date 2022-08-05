@@ -47,21 +47,21 @@
                         </div>
                         <div class="col col-12 col-md-4">
                             <div class="card c2">
-                                <img src="../assets/img/gridcards.png" class="card-img-top" alt="Actividad ABN">
+                                <img src="../assets/img/Act4SE.png" class="card-img-top" alt="Actividad ABN">
                                 <div class="card-body">
                                     <h5 class="card-title">Problema de Combinación</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <p class="card-text">Resuelve haciendo la resta ABN mediante el formato propuesto. Ayudame a saber cuántos asientos disponibles tiene el autobus.</p>
                                     <router-link to="/problemacombinacion"><span class="ligas">Comenzar</span></router-link>
                                 </div>
                             </div>
                         </div>
                         <div class="col col-12 col-md-4">
                             <div class="card c2">
-                                <img src="../assets/img/gridcards.png" class="card-img-top" alt="Actividad ABN">
+                                <img src="../assets/img/Act5SE.png" class="card-img-top" alt="Actividad ABN">
                                 <div class="card-body">
                                     <h5 class="card-title">Problema de Comparación</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Comenzar</a>
+                                    <p class="card-text">Ayuda al personal de la primaria a calcular cuántos litros más de agua tiene el tinaco más lleno comparado con el más vacio.</p>
+                                    <router-link to="/problemacomparacion"><span class="ligas">Comenzar</span></router-link>
                                 </div>
                             </div>
                         </div>
@@ -71,9 +71,9 @@
                             <div class="card c2">
                                 <img src="../assets/img/gridcards.png" class="card-img-top" alt="Actividad ABN">
                                 <div class="card-body">
-                                    <h5 class="card-title">Problema de igualación</h5>
+                                    <h5 class="card-title">Problema de Igualación</h5>
                                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Comenzar</a>
+                                     <router-link to="/problemaigualacion"><span class="ligas">Comenzar</span></router-link>
                                 </div>
                             </div>
                         </div>

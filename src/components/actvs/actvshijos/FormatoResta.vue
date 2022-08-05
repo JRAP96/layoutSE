@@ -25,10 +25,10 @@
                     </tr>
                     <tr v-for="(item,index) in contadorArray" :key="index" :class="{bordesGreen: (item.correcto1 && item.correcto2), bordesNone: !(item.correcto1 && item.correcto2)}">
                         <td class="bg-info">
-                            <input type="number" :disabled="(item.desabilitar == 1)||(item.correcto1 && item.correcto2)" placeholder="..." v-model.number="item.quito" onkeypress="return event.charCode >= 48" min="0">
+                            <input type="number" :disabled="(item.desabilitar == 1)||(item.correcto1 && item.correcto2)" placeholder="..." v-model.number="item.quito" onkeypress="return event.charCode >= 48 && event.charCode <= 57" min="0">
                         </td>
                         <td :class="{finalS: item.final,finalN: !item.final}">
-                            <input type="number" :disabled="(item.desabilitar == 1)||(item.correcto1 && item.correcto2)" placeholder="..." v-model.number="item.minuendo" onkeypress="return event.charCode >= 48" min="0">
+                            <input type="number" :disabled="(item.desabilitar == 1)||(item.correcto1 && item.correcto2)" placeholder="..." v-model.number="item.minuendo" onkeypress="return event.charCode >= 48 && event.charCode <= 57" min="0">
                                 <div v-if="item.pasados1" class="alert alert-warning text-dark" role="alert">
                                     <p class="fs-6">Quitaste menos de lo que indicaste en la columna Quito. Corrigue</p>
                                 </div>
@@ -37,7 +37,7 @@
                                 </div>
                         </td>
                         <td :class="{finalS: item.final,finalN: !item.final}">
-                            <input type="number" :disabled="(item.desabilitar == 1)||(item.correcto1 && item.correcto2)" placeholder="..." v-model.number="item.sustraendo" onkeypress="return event.charCode >= 48" min="0">
+                            <input type="number" :disabled="(item.desabilitar == 1)||(item.correcto1 && item.correcto2)" placeholder="..." v-model.number="item.sustraendo" onkeypress="return event.charCode >= 48 && event.charCode <= 57" min="0">
                                 <div v-if="item.pasados3" class="alert alert-warning text-dark" role="alert">
                                     <p class="fs-6">Quitaste menos de lo que indicaste en la columna Quito. Corrigue</p>
                                 </div>

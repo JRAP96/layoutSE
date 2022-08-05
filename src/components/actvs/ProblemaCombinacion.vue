@@ -8,7 +8,7 @@
             <img src="../../assets/imgA4/busgreen.jpg" class="img-fluid" alt="Autobus de viaje">
         </div>
         <div id="problema" v-show="!mostrarIntro">
-            <p class="fs-4">Para estas vacaciones llevaré a mi familia de paseo a la playa. Pero al comprar los boletos en un sitio de internet solo obtengo una vista de los asientos con: rojo ocupados, verde: disponibles.<br><br>He contado {{this.resta}} asientos ocupados de los {{this.x}} que tiene el autobus. Ayudame a saber cuantos asientos quedan libres mediante el algoritmo ABN de la resta.</p>
+            <p class="fs-4" id="enunciado">Para estas vacaciones llevaré a mi familia de paseo a la playa. Pero al comprar los boletos en un sitio de internet solo obtengo una vista de los asientos con: rojo ocupados, verde: disponibles.<br><br>He contado {{this.resta}} asientos ocupados de los {{this.x}} que tiene el autobus. Ayudame a saber cuantos asientos quedan libres mediante el algoritmo ABN de la resta.</p>
             <div id="contenidoRI">
                 <formato-resta v-if="!mostrarIntro" @objAct="actualizarObj" :resta="resta" :x="x" :y="y" :tituloMin="'Total de asientos'" :tituloSus="'Asientos ocupados'"/>
                 <svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" width="330px" id="svg2" viewBox="0 0 62 134" version="1.1">
@@ -157,7 +157,6 @@ export default {
             x: 40,
             y: 0,   // Asiento disponible
             resta: 0,   // Asiento ocupado
-            indicadorSus: null,
             s: null, // Para el canvas Snap
             asientos: [],
             asientosO: [],
@@ -173,7 +172,6 @@ export default {
             this.susAct = sustraendo;
             this.quitoAct = quito;
             this.irBorrando(this.quitoAct);
-            this.indicadorSus.attr({text:'Asientos ocupados: '+this.susAct});
         },
         randomF(min,max) {
             let i = Math.floor((Math.random() * (max - min + 1)) + min);
@@ -183,7 +181,6 @@ export default {
             this.mostrarIntro = false;
             this.y = this.randomF(1,35);
             this.resta = this.x - this.y;
-            this.indicadorSus=this.s.text(12,27,'Asientos ocupados: '+this.resta.toString()).attr({fill:"red","font-size": "3.5","font-weight":"bold"});
             this.dibujaRamdon();
         },
         dibujaRamdon(){
@@ -271,6 +268,11 @@ export default {
 #contenidoRI{
     display: flex;
     justify-content: space-around;
+}
+
+#enunciado,#intro{
+    margin-right: 2rem;
+    margin-left: 2rem;
 }
 
 @media (max-width:768px) {

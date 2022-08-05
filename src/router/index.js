@@ -6,6 +6,8 @@ import ComplementoA10 from "../components/actvs/ComplementoA10.vue"
 import ComplementoA102 from "../components/actvs/ComplementoA102.vue"
 import ProblemaCambio from "../components/actvs/ProblemaCambio.vue"
 import ProblemaCombinacion from "../components/actvs/ProblemaCombinacion.vue"
+import ProblemaComparacion from "../components/actvs/ProblemaComparacion.vue"
+import ProblemaIgualacion from "../components/actvs/ProblemaIgualacion.vue"
 
 Vue.use(VueRouter)
 
@@ -34,6 +36,16 @@ const routes = [
         path: "/problemacombinacion",
         name: "problemacombinacion",
         component: ProblemaCombinacion
+    },
+    {
+        path: "/problemacomparacion",
+        name: "problemacomparacion",
+        component: ProblemaComparacion
+    },
+    {
+        path: "/problemaigualacion",
+        name: "problemaigualacion",
+        component: ProblemaIgualacion
     }
 ]
 
