@@ -63,7 +63,7 @@
                     </tr>
                 </tbody>
             </table>
-            <button type="button" class="btn btn-success" @click="agregarFila">+</button>
+            <button type="button" class="btn btn-success" @click="agregarFila">Agrega Fila</button>
         </div>
     </div>
 </template>

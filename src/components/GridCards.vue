@@ -69,11 +69,11 @@
                     <div class="row">
                         <div class="col col-12 col-md-4">
                             <div class="card c2">
-                                <img src="../assets/img/gridcards.png" class="card-img-top" alt="Actividad ABN">
+                                <img src="../assets/img/Act6SE.png" class="card-img-top" alt="Actividad ABN">
                                 <div class="card-body">
                                     <h5 class="card-title">Problema de Igualación</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                     <router-link to="/problemaigualacion"><span class="ligas">Comenzar</span></router-link>
+                                    <p class="card-text">Resolveras un problema mediante el formato para la resta ABN. Calcula la diferencia del contenido de ambas bolsas y logra igualar ambas cantidades.</p>
+                                    <router-link to="/problemaigualacion"><span class="ligas">Comenzar</span></router-link>
                                 </div>
                             </div>
                         </div>

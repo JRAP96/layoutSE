@@ -8,7 +8,7 @@
             <img src="../../assets/imgA5/school.png" class="img-fluid" alt="Escuela Primaria">
         </div>
         <div id="problema" v-show="!mostrarIntro">
-            <p class="fs-3" id="enunciado">La escuela primaria donde estudio tiene dos tinacos de agua para los baños. Actualmente uno esta más lleno que el otro y es importante saber cuál es la diferencia en litros de agua entre estos tinacos, pues deben permanecer al mismo nivel.<br>
+            <p class="fs-3" id="enunciado">La escuela primaria donde estudio tiene dos tinacos de agua para los baños. Actualmente uno esta más lleno que el otro y es importante saber cuál es la diferencia en litros de agua entre estos tinacos.<br>
             El tinaco más lleno tiene <strong>{{this.x}} litros de Agua</strong> mientras que el más vacio tiene <strong>{{this.resta}} litros de agua</strong>. <span id="question">Ayúdanos a calcular la diferencia de agua entre los tinacos.</span></p>
             <div id="contenidoRI">
                 <formato-resta v-if="!mostrarIntro" @objAct="actualizarObj" :resta="resta" :x="x" :y="y" :tituloMin="'Tinaco +lleno'" :tituloSus="'Tinaco -lleno'"/>
@@ -40,8 +40,10 @@
                 </div>
             </div>
         </div>
-        <button type="button" class="btn btn-primary" @click="generarRandom">Comenzar</button>
-        <router-link to="/"><span class="ligas">Ver Actividades</span></router-link>
+        <div style="width: 300px; margin: 0 auto; margin-top:2rem">
+            <button type="button" class="btn btn-primary" @click="generarRandom">Comenzar</button>
+            <router-link to="/"><span class="ligas">Ver Actividades</span></router-link>
+        </div>
     </div>
 </template>
 
