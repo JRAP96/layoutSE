@@ -99,6 +99,11 @@
                     </div>
                 </div>
             </div>
+            <div id="peceraComun">
+                <p id="textoComun">Si necesitas colocar algún pez fuera de la pecera, ponlo aquí</p>
+                <div id="peceraCint" @drop.self="onDrop2($event)" @dragover.prevent  @dragenter.prevent>
+                </div>
+            </div>
         </div>
         <br>
         <router-link to="/"><span class="ligas">Ver Actividades</span></router-link>
@@ -191,6 +196,18 @@ export default {
                     return
                 }
                 this.actualizador2(evt.target.id,elementoId)
+            } else {
+                return
+            }
+        },
+        onDrop2(evt) {   // Es un drop sencillo para mantener los peces en una pecera comun mientras manipula el alumno.
+            evt.preventDefault();
+            const elementoId = evt.dataTransfer.getData('text/plain');
+            const elemento = document.getElementById(elementoId);
+            if (evt.target.childElementCount <= 4) {
+                elemento.style.display = "block";
+                elemento.style.width = "20%";
+                evt.target.appendChild(elemento);
             } else {
                 return
             }
@@ -292,4 +309,23 @@ export default {
     border: 2px solid green;
     border-radius: 10px;
 }
+#peceraComun{
+    height: 150px;
+    margin: 2rem;
+    background-color: lightyellow;
+    border: 2px solid yellow;
+    border-radius: 10px;
+}
+    #textoComun{
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 200;
+        color: green;
+        font-style: oblique;
+    }
+    #peceraCint{
+        height: 100px;
+        width: auto;
+        display: flex;
+    }
 </style>

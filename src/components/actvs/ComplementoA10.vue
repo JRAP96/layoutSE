@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3 id="titAct">Los peces salen de viaje</h3>
-        <h5 id="instruAct">El grupo de peces que ha salido de excursión ya no puede seguir con su camino, pues están atravezando un arrecife de coral muy dificil por el cual nadar. Todos los peces deben de tener sus 10 escamas para poder atravezarlo, sin embargo, algunos de ellos tienen menos de 10 escamas.<br><br>Ayudalos arrastrando de 1 en 1 las escamas de la bolsa hasta los peces que no tiene sus 10 escamas y completalas.</h5>
+        <h5 id="instruAct">El grupo de peces que ha salido de excursión ya no puede seguir con su camino, pues están atravezando un arrecife de coral muy dificil por el cual nadar. Todos los peces deben de tener sus 10 escamas para poder atravezarlo, sin embargo, algunos de ellos tienen menos de 10 escamas.<br><br>Ayudalos arrastrando de 1 en 1 las escamas de la bolsa hasta los peces que no tiene sus 10 escamas (marcos amarillos) y completalas.</h5>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-6 col-md-2">
@@ -117,7 +117,6 @@ export default {
             evt.preventDefault();            
             evt.dataTransfer.getData('text/plain');
             this.idCaida = parseInt(evt.target.id);
-            console.log(this.idCaida,typeof(this.idCaida),evt.target.id);
             if (this.idCaida==0) {
                 this.counter++;
             } else if (this.idCaida==4) {

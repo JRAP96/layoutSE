@@ -81,6 +81,7 @@ export default {
     height: auto;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    border: 3px solid yellow;
 }
 .mostrarPez2{
     border: 3px solid green;
