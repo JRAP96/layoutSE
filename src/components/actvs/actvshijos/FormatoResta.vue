@@ -5,8 +5,7 @@
                 <thead>
                     <tr>
                         <th colspan="4" class="bg bg-primary">
-                            <p v-if="!finalizo">{{this.x}} - {{this.resta}}</p>
-                            <p v-if="finalizo">{{this.x}} - {{this.resta}} = {{this.valorResta}}</p>
+                            <p>{{this.x}} - {{this.resta}}</p>
                         </th>
                     </tr>
                 </thead>
@@ -54,7 +53,7 @@
                                 @click="validador($event)">
                                     {{item.llenos?"Validar":"Debes llenar la fila. Luego da click."}}
                             </button>
-                            <p class="fs-6" v-else-if="item.final">Terminaste. Mira la resta</p>
+                            <p class="fs-6" v-else-if="item.final">Terminaste. Escribe la resta</p>
                             <p v-else class="fs-6">Correcto</p>
                             <div v-if="item.pasados" class="alert alert-danger text-dark" role="alert">
                                 <p class="fs-6">No puedes quitar más que el sustraendo ni colocar negativos. Corrigue.</p>
@@ -86,7 +85,6 @@ export default {
                             {quito: null,minuendo: null,sustraendo: null,llenos: true,pasados: false,pasados1: false,pasados2: false,pasados3: false,pasados4: false,correcto1: false,correcto2: false,desabilitar: 1,final: false}],
             xNew: this.x,
             restaNew: this.resta,
-            finalizo: false,
             valorResta: null,
         }
     },
@@ -197,7 +195,6 @@ export default {
                 }
                 if(obj.sustraendo == 0) {
                     this.valorResta = obj.minuendo;
-                    this.finalizo = true;
                     obj.final = true;
                     this.$emit('objAct',obj.minuendo,obj.sustraendo,obj.quito);
                     return

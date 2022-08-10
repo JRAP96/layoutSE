@@ -21,7 +21,7 @@
                         <label for="floatingInput">Entonces, ¿Cuántos gramos se necesitan para igualar ambas bolsas a 250g? Escribe aquí tu respuesta y nivela la balanza.</label>
                         <button type="button" class="btn btn-primary btn-sm" @click="validarRespuesta">
                             <span v-if="indicador1">Prueba tu respuesta</span>
-                            <span v-if="!indicador1">{{indicador2?"Correcto!!!":"Intenta nuevamente, revisa la resta."}}</span>
+                            <span v-if="!indicador1">{{indicador2?"Correcto!!!... Finalmente escribe tu resta abajo":"Intenta nuevamente, revisa la resta."}}</span>
                         </button>
                     </div>
                     <svg width="350px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="egsWaYi2BA91" viewBox="0 0 297.25 230.88" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
@@ -48,6 +48,7 @@
                             </clipPath>
                         </g>
                     </svg>
+                    <resta-input v-if="preguntarResta" :x="x" :y="resta" :resta="y" :pregunta="'Entonces, ¿Cuántos gramos de golosinas le faltaban a mi bolsa para tener los mismos que mi amigo? Escribe la resta completa que te lleva a la solución que obtuviste.'"/>
                 </div>
             </div>
         </div>
@@ -61,11 +62,13 @@
 <script>
 import Snap from "snapsvg-cjs";
 import FormatoResta from "../actvs/actvshijos/FormatoResta.vue";
+import RestaInput from "../actvs/actvshijos/RestaInput.vue"
 
 export default {
     name: "ProblemaIgualacion",
     components: {
-        FormatoResta
+        FormatoResta,
+        RestaInput
     },
     data: function() {
         return {
@@ -86,6 +89,7 @@ export default {
             susAct: null,
             quitoAct: null,
             recibirResta: null,
+            preguntarResta: false,
         }
     },
     computed:{
@@ -123,6 +127,7 @@ export default {
             this.susAct = sustraendo;
             this.quitoAct = quito;
             this.changeText();
+            this.preguntaShow() // Para mostrar la pregunta de la resta al final
         },
         changeText(){
             this.text1.attr({text:this.minAct.toString()+'g'});
@@ -147,8 +152,13 @@ export default {
             }
             else {
                 this.indicador2 = false;
-                console.log("fuera del rango");
             }
+        },
+        preguntaShow() {
+            if (this.susAct == 0 && this.minAct == this.y) {
+                this.preguntarResta = true;
+            }
+            return
         }
     },
     mounted: function() {

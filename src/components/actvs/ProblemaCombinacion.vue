@@ -8,9 +8,14 @@
             <img src="../../assets/imgA4/busgreen.jpg" class="img-fluid" alt="Autobus de viaje">
         </div>
         <div id="problema" v-show="!mostrarIntro">
-            <p class="fs-4" id="enunciado">Para estas vacaciones llevaré a mi familia de paseo a la playa. Pero al comprar los boletos en un sitio de internet solo obtengo una vista de los asientos con: rojo ocupados, verde: disponibles.<br><br>He contado {{this.resta}} asientos ocupados de los {{this.x}} que tiene el autobus. Ayudame a saber cuantos asientos quedan libres mediante el algoritmo ABN de la resta.</p>
+            <p class="fs-4" id="enunciado">Para estas vacaciones llevaré a mi familia de paseo a la playa. Pero al comprar los boletos en un sitio de internet solo obtengo una vista de los asientos con: rojo ocupados, verde: disponibles.<br><br>He contado <strong>{{this.resta}} asientos ocupados</strong> de los <strong>{{this.x}} asientos totales</strong> del autobus. <span id="question">Ayudame a saber cuántos asientos quedan libres mediante el algoritmo ABN de la resta.</span></p>
             <div id="contenidoRI">
-                <formato-resta v-if="!mostrarIntro" @objAct="actualizarObj" :resta="resta" :x="x" :y="y" :tituloMin="'Total de asientos'" :tituloSus="'Asientos ocupados'"/>
+                <div>
+                    <div style="margin: 1rem">
+                        <resta-input v-if="preguntarResta" :x="x" :y="resta" :resta="y" :pregunta="'Entonces, ¿Cuántos asientos del autobus quedan libres? Escribe la resta completa que te lleva a la solución que obtuviste.'"/>
+                    </div>
+                    <formato-resta v-if="!mostrarIntro" @objAct="actualizarObj" :resta="resta" :x="x" :y="y" :tituloMin="'Total de asientos'" :tituloSus="'Asientos ocupados'"/>
+                </div>
                 <svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" width="330px" id="svg2" viewBox="0 0 62 134" version="1.1">
                     <defs id="defs6">
                         <linearGradient id="linearGradient5105">
@@ -147,6 +152,7 @@
 import Snap from 'snapsvg-cjs'
 
 import FormatoResta from "../actvs/actvshijos/FormatoResta.vue"
+import RestaInput from "../actvs/actvshijos/RestaInput.vue"
 
 export default {
     name: "ProblemaCombinacion",
@@ -162,11 +168,13 @@ export default {
             s: null, // Para el canvas Snap
             asientos: [],
             asientosO: [],
-            contador: 0
+            contador: 0,
+            preguntarResta: false,
         }
     },
     components: {
-        FormatoResta
+        FormatoResta,
+        RestaInput
     },
     methods: {
         actualizarObj(minuendo,sustraendo,quito) {
@@ -174,6 +182,7 @@ export default {
             this.susAct = sustraendo;
             this.quitoAct = quito;
             this.irBorrando(this.quitoAct);
+            this.preguntaShow() // Para mostrar la pregunta de la resta al final
         },
         randomF(min,max) {
             let i = Math.floor((Math.random() * (max - min + 1)) + min);
@@ -210,6 +219,15 @@ export default {
             for (let i = 0; i < this.contador; i++) {
                 this.asientos[this.asientosO[i]].attr({fill:"none",stroke:"gray"});
             }
+        },
+        preguntaShow() {
+            if (this.susAct == 0 && this.minAct == this.y) {
+                this.preguntarResta = true;
+                this.s.text(12,25,'¡Correcto!').attr({'font-size':'0.4rem','font-weight':'bold','fill':'green'});
+                this.s.text(12,30,'Esos únicos asientos son los').attr({'font-size':'0.18rem'});
+                this.s.text(12,35,'vacios. Responde la pregunta').attr({'font-size':'0.18rem'});
+            }
+            return
         }
     },
     mounted: function() {
@@ -271,10 +289,13 @@ export default {
     display: flex;
     justify-content: space-around;
 }
-
 #enunciado,#intro{
     margin-right: 2rem;
     margin-left: 2rem;
+}
+#question{
+    font-weight: bold;
+    color: rgb(50, 128, 50);
 }
 
 @media (max-width:768px) {
