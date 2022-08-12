@@ -53,7 +53,7 @@
             </div>
         </div>
         <div style="width: 300px; margin: 0 auto; margin-top:2rem">
-            <button type="button" class="btn btn-primary" @click="generarRandom">Comenzar</button>
+            <button v-show="mostrarIntro" type="button" class="btn btn-primary" @click="generarRandom">Comenzar</button>
             <router-link to="/"><span class="ligas">Ver Actividades</span></router-link>
         </div>
     </div>
@@ -147,8 +147,8 @@ export default {
                 this.gGeneral.animate({transform: "r"+15+",149.15,41.58"},4000);
                 this.gB1.animate({transform: "r"+345+",45.29,70.02"},4000);
                 this.gB2.animate({transform: "r"+345+",251.67,13.14"},4000);
-                this.text1.attr({fill:"white",stroke:"blue","stroke-width":"1",text:'250g'});
-                this.text2.animate({fill:"white",stroke:"blue","stroke-width":"1",text:'250g'},4000);
+                this.text1.attr({fill:"white",stroke:"none","stroke-width":"1",text:'250g'});
+                this.text2.attr({fill:"white",stroke:"white","stroke-width":"1",text:'250g'},4000);
             }
             else {
                 this.indicador2 = false;

@@ -56,7 +56,7 @@
             </div>
         </div>
         <div style="width: 300px; margin: 0 auto; margin-top:2rem">
-            <button type="button" class="btn btn-primary" @click="generarRamdon">Comenzar</button>
+            <button v-show="mostrarIntro" type="button" class="btn btn-primary" @click="generarRamdon">Comenzar</button>
             <!-- <button type="button" class="btn btn-secondary" @click="reiniciarRamdon">Reiniciar</button> -->
             <router-link to="/"><span class="ligas">Ver Actividades</span></router-link>
         </div>

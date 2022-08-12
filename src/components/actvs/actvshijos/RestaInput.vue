@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="Auxiliate de la resta ABN" v-model="restaIn" onkeypress="return event.charCode >= 43 && event.charCode <= 61 && event.charCode != 44 && event.charCode != 46 && event.charCode != 47 && event.charCode != 58 && event.charCode != 59 && event.charCode != 60">
+            <input type="text" autocomplete="off" class="form-control" id="floatingInput" placeholder="Auxiliate de la resta ABN" v-model="restaIn" onkeypress="return event.charCode >= 43 && event.charCode <= 61 && event.charCode != 44 && event.charCode != 46 && event.charCode != 47 && event.charCode != 58 && event.charCode != 59 && event.charCode != 60">
             <label for="floatingInput">{{pregunta}}</label>
             <button id="botonChecar" type="button" :class="{'btn btn-primary btn-sm': indicador2,'btn btn-danger btn-sm': !indicador2}" @click="validarRespuesta">
                 <span v-if="indicador1">Prueba tu respuesta</span>
@@ -53,6 +53,19 @@ export default {
 </script>
 
 <style scoped>
+#floatingInput{
+    border: 2px solid blue;
+    box-shadow: 0px 0px 20px;
+    animation: infinite resplandorAnimation 2s;
+}
+    @keyframes resplandorAnimation {
+    0%,100%{
+        box-shadow: 0px 0px 20px;
+    }
+    50%{
+    box-shadow: 0px 0px 0px;
+    }
+}
 #floatingInput{
     border: 2px solid blue;
     font-weight:bold;

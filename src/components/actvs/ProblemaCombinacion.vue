@@ -142,7 +142,7 @@
             </div>
         </div>
         <div style="width: 300px; margin: 0 auto; margin-top:2rem">
-            <button type="button" class="btn btn-primary" @click="generaRamdon">Comenzar</button>
+            <button v-show="mostrarIntro" type="button" class="btn btn-primary" @click="generaRamdon">Comenzar</button>
             <router-link to="/"><span class="ligas">Ver Actividades</span></router-link>
         </div>
     </div>

@@ -186,9 +186,9 @@ export default {
         }
 .peces{
     width: 100px;
-    height: 150px;
-    background-color: transparent;
-    /*border: lightblue 1px solid;*/
+    height: 155px;
+    background-color: rgba(0, 255, 255,0.1);
+    border: lightblue 1px solid;
     position: absolute;
 }
     .pecesaux{
