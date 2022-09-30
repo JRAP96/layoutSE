@@ -84,27 +84,27 @@ export default {
     },
     computed: {
         conversorLTM() {
-            let valor =  this.minAct*0.001;
+            let valor =  this.minAct*0.01;
             return valor
         },
         conversorLTS() {
-            let valor =  this.susAct*0.001;
+            let valor =  this.susAct*0.01;
             return valor
         },
     },
     methods: {
         generarRandom(){
             this.mostrarIntro = false;
-            this.x = this.randomF(750,880);
-            this.resta = this.randomF(500,650);
+            this.x = this.randomF(75,88);
+            this.resta = this.randomF(50,65);
             this.y = this.x - this.resta;
             this.sP1.attr({fill:"green"});
             this.oP3.attr({fill:"pink"});
             this.sP2.attr({"stroke-width":2});
             this.oP4.attr({"stroke-width":2});
             this.s.text(130,170,this.x.toString()+' lt').attr({fill:"blue","font-size": "50","font-weight":"bold"});
-            this.actualizarAT1(this.x*0.001);
-            this.actualizarAT2(this.resta*0.001);
+            this.actualizarAT1(this.x*0.01);
+            this.actualizarAT2(this.resta*0.01);
             //let esc = (481/880)*this.minAct; Para la escala vertical de la imagen s y colocar textos encima.
             this.textoT1 = this.s.text(100,410,' ').attr({fill:"black","font-size": "50","font-weight":"bold"});
             this.textoT2 = this.o.text(100,410,' ').attr({fill:"black","font-size": "50","font-weight":"bold"});
