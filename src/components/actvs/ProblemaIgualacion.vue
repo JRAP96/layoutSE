@@ -77,7 +77,7 @@ export default {
             mostrarPregunta: false,
             indicador1: true,
             indicador2: true,
-            x: 250, // Gramos de golosina amigo
+            x: 100, // Gramos de golosina amigo
             y: 0,   // diferencia en gramos
             resta: 0, // Mis gramos de golosina
             gGeneral: null, // g... son los grupos de vectores que haremos rotar
@@ -94,15 +94,15 @@ export default {
     },
     computed:{
         escala(){
-            let numEscalado = 335+(40/250)*this.resta;
+            let numEscalado = 335+(40/100)*this.resta;
             return numEscalado
         },
         escalaHijo(){
             if (this.escala<=360) {
-                let numEscalado = 25-(40/250)*this.resta;
+                let numEscalado = 25-(40/100)*this.resta;
                 return numEscalado
             } else {
-                let numEscalado = 385-(40/250)*this.resta;
+                let numEscalado = 385-(40/100)*this.resta;
                 return numEscalado
             }
         }
@@ -114,12 +114,12 @@ export default {
         },
         generarRandom(){
             this.mostrarIntro = false;
-            this.resta = this.randomF(50,230);
+            this.resta = this.randomF(20,92);
             this.y = this.x - this.resta;
             this.gGeneral.transform("r"+this.escala+",149.15,41.58");
             this.gB1.transform("r"+this.escalaHijo+",45.29,70.02");
             this.gB2.transform("r"+this.escalaHijo+",251.67,13.14");
-            this.text1 = this.gB1.text(28,165,"250g").attr({fill:"green","font-size": "17","font-weight":"bold",stroke:"yellow","stroke-width":"0.4"});
+            this.text1 = this.gB1.text(28,165,"100g").attr({fill:"green","font-size": "17","font-weight":"bold",stroke:"yellow","stroke-width":"0.4"});
             this.text2 = this.gB2.text(235,110,this.resta.toString()+"g").attr({fill:"green","font-size": "17","font-weight":"bold",stroke:"yellow","stroke-width":"0.4"});
         },
         actualizarObj(minuendo,sustraendo,quito){
@@ -147,8 +147,8 @@ export default {
                 this.gGeneral.animate({transform: "r"+15+",149.15,41.58"},4000);
                 this.gB1.animate({transform: "r"+345+",45.29,70.02"},4000);
                 this.gB2.animate({transform: "r"+345+",251.67,13.14"},4000);
-                this.text1.attr({fill:"white",stroke:"none","stroke-width":"1",text:'250g'});
-                this.text2.attr({fill:"white",stroke:"white","stroke-width":"1",text:'250g'},4000);
+                this.text1.attr({fill:"white",stroke:"none","stroke-width":"1",text:'100g'});
+                this.text2.attr({fill:"white",stroke:"none","stroke-width":"1",text:'100g'},4000);
             }
             else {
                 this.indicador2 = false;
