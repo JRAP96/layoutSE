@@ -175,7 +175,7 @@ export default {
     }
 #problema1{
 display: flex;
-justify-content: space-evenly;
+justify-content: space-around;
 }
 
 @media (max-width:768px) {
