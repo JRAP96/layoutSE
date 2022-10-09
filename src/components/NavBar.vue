@@ -3,7 +3,7 @@
     <header>
         <div id="titulo" class="row container-fluid">
             <div id="imagen" class="col-ms-12 col-md-5">
-                <a href="#">
+                <a href="https://jrap96.github.io/primerEje/">
                     <img src="../assets/logo2.png" class="img-fluid" alt="Logo ABN">
                 </a>
             </div>
@@ -23,7 +23,7 @@
                         <a class="nav-link active fs-6 fw-bold" aria-current="page" href="#"><font-awesome-icon icon="fa-solid fa-user" /> Iniciar Sesión</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active fs-6 fw-bold" aria-current="page" href="#">Primer Eje</a>
+                        <a class="nav-link active fs-6 fw-bold" aria-current="page" href="https://jrap96.github.io/primerEje/">Primer Eje</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active fs-6 fw-bold" aria-current="page" href="#">Segundo Eje</a>
