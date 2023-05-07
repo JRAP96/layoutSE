@@ -17,7 +17,7 @@
                             <div class="card c1">
                                 <img src="../assets/img/Act1SE.png" class="card-img-top" alt="Actividad ABN">
                                 <div class="card-body">
-                                    <h5 class="card-title">Complemento a 10 - Primera</h5>
+                                    <h5 class="card-title">Los peces salen de viaje</h5>
                                     <p class="card-text">Vamos a ejercitarnos y abordar las parejas de números naturales menores a 10 que sumen precisamente una decena.</p>
                                     <router-link to="/complementoa10"><span class="ligas">Comenzar</span></router-link>
                                 </div>
@@ -27,7 +27,7 @@
                             <div class="card c1">
                                 <img src="../assets/img/Act2SE.png" class="card-img-top" alt="Actividad ABN">
                                 <div class="card-body">
-                                    <h5 class="card-title">Complemento a 10 - Segunda</h5>
+                                    <h5 class="card-title">Los peces salen de viaje 2</h5>
                                     <p class="card-text">Continuamos con la historia de los peces cuyas escamas y el número 10 (la decena) estan muy relalacionados.</p>
                                     <router-link to="/complementoa102"><span class="ligas">Comenzar</span></router-link>
                                 </div>
@@ -39,7 +39,7 @@
                             <div class="card c2">
                                 <img src="../assets/img/Act3SE.png" class="card-img-top" alt="Actividad ABN">
                                 <div class="card-body">
-                                    <h5 class="card-title">Problema de Cambio</h5>
+                                    <h5 class="card-title">Mi consumo de gasolina</h5>
                                     <p class="card-text">Resolveras un problema de cambio que implica hacer una resta. Haz la resta mediante el formato de algoritmo ABN y visualiza que ocurre.</p>
                                     <router-link to="/problemacambio"><span class="ligas">Comenzar</span></router-link>
                                 </div>
@@ -49,7 +49,7 @@
                             <div class="card c2">
                                 <img src="../assets/img/Act4SE.png" class="card-img-top" alt="Actividad ABN">
                                 <div class="card-body">
-                                    <h5 class="card-title">Problema de Combinación</h5>
+                                    <h5 class="card-title">Asientos en el autobus</h5>
                                     <p class="card-text">Resuelve haciendo la resta ABN mediante el formato propuesto. Ayudame a saber cuántos asientos disponibles tiene el autobus.</p>
                                     <router-link to="/problemacombinacion"><span class="ligas">Comenzar</span></router-link>
                                 </div>
@@ -59,7 +59,7 @@
                             <div class="card c2">
                                 <img src="../assets/img/Act5SE.png" class="card-img-top" alt="Actividad ABN">
                                 <div class="card-body">
-                                    <h5 class="card-title">Problema de Comparación</h5>
+                                    <h5 class="card-title">Agua en la escuela</h5>
                                     <p class="card-text">Ayuda al personal de la primaria a calcular cuántos litros más de agua tiene el tinaco más lleno comparado con el más vacio.</p>
                                     <router-link to="/problemacomparacion"><span class="ligas">Comenzar</span></router-link>
                                 </div>
@@ -71,7 +71,7 @@
                             <div class="card c2">
                                 <img src="../assets/img/Act6SE.png" class="card-img-top" alt="Actividad ABN">
                                 <div class="card-body">
-                                    <h5 class="card-title">Problema de Igualación</h5>
+                                    <h5 class="card-title">Mis gasolinas</h5>
                                     <p class="card-text">Resolveras un problema mediante el formato para la resta ABN. Calcula la diferencia del contenido de ambas bolsas y logra igualar ambas cantidades.</p>
                                     <router-link to="/problemaigualacion"><span class="ligas">Comenzar</span></router-link>
                                 </div>
